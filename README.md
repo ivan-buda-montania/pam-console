@@ -63,3 +63,4 @@ src/
 Stack: Vite + React 19 (JSX), React Router v7, Tailwind CSS 3, framer-motion, recharts.
 # pam-console-demo
 # pam-console-demo
+# pam-console-demo
