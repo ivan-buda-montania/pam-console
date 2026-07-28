@@ -3,33 +3,33 @@
 @tailwind utilities;
 
 @layer base {
-  /* ---- Tema claro (por defecto) ---- */
+  /* ---- Tema claro: Madera Clara / Abedul Escandinavo ---- */
   :root {
-    --c-app: 245 246 249;
-    --c-surface: 255 255 255;
-    --c-elevated: 244 245 248;
-    --c-text: 29 29 31;
-    --c-text2: 99 99 106;
-    --c-text3: 133 133 140;
-    --c-border: 226 227 232;
-    --c-tint: 238 239 243;
-    --c-accent: 0 113 227;
-    --c-accent2: 0 96 200;
+    --c-app: 243 236 224;      /* #F3ECE0 - Fondo base de madera clara */
+    --c-surface: 251 248 243;  /* #FBF8F3 - Superficie limpia de abedul */
+    --c-elevated: 255 255 255; /* #FFFFFF - Contenedor elevado / tarjeta activa */
+    --c-text: 35 28 24;        /* #231C18 - Marrón de grano denso (texto principal) */
+    --c-text2: 98 84 73;       /* #625449 - Tono nogal suave (texto secundario) */
+    --c-text3: 154 138 124;    /* #9A8A7C - Ceniza desgastada (texto terciario/muted) */
+    --c-border: 220 208 191;   /* #DCD0BF - Borde sutil de veta de madera */
+    --c-tint: 232 222 206;     /* #E8DECE - Tinte cálido de madera */
+    --c-accent: 196 122 43;    /* #C47A2B - Resina de Ámbar Cálida */
+    --c-accent2: 168 100 32;   /* #A86420 - Resina de Ámbar Oscura (hover) */
     color-scheme: light;
   }
 
-  /* ---- Tema oscuro ---- */
+  /* ---- Tema oscuro: Granadillo de África (African Blackwood) ---- */
   .dark {
-    --c-app: 11 11 14;
-    --c-surface: 28 28 32;
-    --c-elevated: 40 40 46;
-    --c-text: 245 245 247;
-    --c-text2: 174 174 181;
-    --c-text3: 138 138 146;
-    --c-border: 56 56 62;
-    --c-tint: 46 46 52;
-    --c-accent: 10 132 255;
-    --c-accent2: 64 158 255;
+    --c-app: 18 14 12;         /* #120E0C - Granadillo negro profundo */
+    --c-surface: 27 21 18;     /* #1B1512 - Ébano pulido (superficie) */
+    --c-elevated: 38 30 26;    /* #261E1A - Madera oscura elevada */
+    --c-text: 245 237 228;     /* #F5EDE4 - Albura clara (texto principal) */
+    --c-text2: 180 166 153;    /* #B4A699 - Corteza clara (texto secundario) */
+    --c-text3: 125 112 101;    /* #7D7065 - Tono ceniza oscuro (texto terciario/muted) */
+    --c-border: 54 43 37;      /* #362B25 - Línea de grano oscuro */
+    --c-tint: 32 25 21;        /* #201915 - Tinte oscuro interactivo */
+    --c-accent: 217 150 63;    /* #D9963F - Miel de Ámbar Dorada */
+    --c-accent2: 235 170 85;   /* #EBAA55 - Miel de Ámbar Brillante (hover) */
     color-scheme: dark;
   }
 
@@ -46,16 +46,16 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* Fondo de madera (modo claro) con un aclarado cálido para legibilidad */
+    /* Fondo de madera clara con un tinte ámbar/abedul translúcido para asegurar legibilidad */
     background-image:
-      linear-gradient(rgba(250, 248, 244, 0.3), rgba(250, 248, 244, 0.3)),
+      linear-gradient(rgba(243, 236, 224, 0.45), rgba(243, 236, 224, 0.45)),
       url("/wood-bg.jpg");
   }
 
   .dark body {
-    /* Fondo de madera oscura (modo oscuro) con un velo oscuro para legibilidad */
+    /* Fondo de African Blackwood con velo oscuro orgánico */
     background-image:
-      linear-gradient(rgba(11, 11, 14, 0.4), rgba(11, 11, 14, 0.4)),
+      linear-gradient(rgba(18, 14, 12, 0.55), rgba(18, 14, 12, 0.55)),
       url("/wood-dark-bg.jpg");
   }
 
@@ -96,60 +96,59 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
-  /* ---------- Glassmorphism ---------- */
-  /* Sin tinte de color: casi transparente, solo desenfoque + borde + sombra */
+  /* ---------- Glassmorphism Cálido ---------- */
   .glass,
   .card,
   .glass-strong {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(28px) saturate(150%);
-    -webkit-backdrop-filter: blur(28px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 250, 242, 0.25);
+    backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%);
+    border: 1px solid rgba(220, 208, 191, 0.45);
     box-shadow:
-      0 1px 2px rgba(17, 24, 39, 0.04),
-      0 12px 32px -14px rgba(17, 24, 39, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      0 1px 2px rgba(35, 28, 24, 0.04),
+      0 12px 32px -14px rgba(35, 28, 24, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
   .dark .glass,
   .dark .card,
   .dark .glass-strong {
-    background: rgba(20, 20, 24, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(27, 21, 18, 0.35);
+    border: 1px solid rgba(245, 237, 228, 0.08);
     box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.3),
-      0 16px 40px -16px rgba(0, 0, 0, 0.6),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      0 1px 2px rgba(0, 0, 0, 0.4),
+      0 16px 40px -16px rgba(0, 0, 0, 0.75),
+      inset 0 1px 0 rgba(245, 237, 228, 0.06);
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(36px) saturate(160%);
-    -webkit-backdrop-filter: blur(36px) saturate(160%);
+    background: rgba(255, 250, 242, 0.4);
+    backdrop-filter: blur(36px) saturate(150%);
+    -webkit-backdrop-filter: blur(36px) saturate(150%);
   }
   .dark .glass-strong {
-    background: rgba(22, 22, 26, 0.32);
+    background: rgba(38, 30, 26, 0.5);
   }
 
   /* Vibrancy para barras de navegación */
   .nav-glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(28px) saturate(150%);
-    -webkit-backdrop-filter: blur(28px) saturate(150%);
+    background: rgba(243, 236, 224, 0.45);
+    backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%);
   }
   .dark .nav-glass {
-    background: rgba(16, 16, 20, 0.24);
+    background: rgba(18, 14, 12, 0.5);
   }
 
-  /* Glass más ligero para tablas, controles y menús (sin sombra fuerte) */
+  /* Glass más ligero para tablas, controles y menús */
   .glass-panel {
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(22px) saturate(150%);
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 250, 242, 0.15);
+    backdrop-filter: blur(22px) saturate(140%);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    border: 1px solid rgba(220, 208, 191, 0.35);
   }
   .dark .glass-panel {
-    background: rgba(20, 20, 24, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(27, 21, 18, 0.25);
+    border: 1px solid rgba(245, 237, 228, 0.06);
   }
 
   .card {
@@ -162,15 +161,15 @@
   .card-hover:hover {
     transform: translateY(-2px);
     box-shadow:
-      0 1px 2px rgba(17, 24, 39, 0.05),
-      0 22px 46px -18px rgba(17, 24, 39, 0.26),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      0 1px 2px rgba(35, 28, 24, 0.05),
+      0 22px 46px -18px rgba(35, 28, 24, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
   .dark .card-hover:hover {
     box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.4),
-      0 26px 54px -20px rgba(0, 0, 0, 0.75),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      0 26px 54px -20px rgba(0, 0, 0, 0.85),
+      inset 0 1px 0 rgba(245, 237, 228, 0.08);
   }
 
   /* ---------- Botones ---------- */
@@ -181,7 +180,7 @@
   .btn-primary {
     @apply btn text-white;
     background: linear-gradient(180deg, rgb(var(--c-accent)) 0%, rgb(var(--c-accent2)) 100%);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14), 0 6px 16px -8px rgb(var(--c-accent) / 0.65);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16), 0 6px 16px -8px rgb(var(--c-accent) / 0.65);
   }
   .btn-primary:hover:not(:disabled) {
     filter: brightness(1.06);
@@ -194,26 +193,26 @@
   .btn-ghost {
     @apply btn border text-primary;
     border-color: rgb(var(--c-border));
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 250, 242, 0.2);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }
   .btn-ghost:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 250, 242, 0.35);
   }
   .dark .btn-ghost {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(245, 237, 228, 0.05);
+    border-color: rgba(245, 237, 228, 0.12);
   }
   .dark .btn-ghost:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.09);
+    background: rgba(245, 237, 228, 0.1);
   }
 
   .btn-subtle {
     @apply btn text-secondary;
   }
   .btn-subtle:hover:not(:disabled) {
-    background: rgb(var(--c-text3) / 0.12);
+    background: rgb(var(--c-text3) / 0.15);
   }
 
   .btn-sm {
@@ -224,7 +223,7 @@
   .input {
     @apply w-full rounded-[10px] border px-3 py-2 text-sm text-primary transition;
     border-color: rgb(var(--c-border));
-    background: rgb(var(--c-surface) / 0.12);
+    background: rgb(var(--c-surface) / 0.3);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
@@ -237,7 +236,7 @@
     box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.22);
   }
   .dark .input {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(245, 237, 228, 0.05);
   }
 
   .label {
