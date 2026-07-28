@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#0B0E14"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="#D4A94E" stroke-width="1.5" opacity="0.5"/>
+  <text x="32" y="43" font-family="Sora, system-ui, sans-serif" font-size="30" font-weight="700" fill="#D4A94E" text-anchor="middle">PA</text>
+</svg>

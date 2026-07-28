@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ---- Tema claro (por defecto) ---- */
+  :root {
+    --c-app: 245 246 249;
+    --c-surface: 255 255 255;
+    --c-elevated: 244 245 248;
+    --c-text: 29 29 31;
+    --c-text2: 99 99 106;
+    --c-text3: 133 133 140;
+    --c-border: 226 227 232;
+    --c-tint: 238 239 243;
+    --c-accent: 0 113 227;
+    --c-accent2: 0 96 200;
+    color-scheme: light;
+  }
+
+  /* ---- Tema oscuro ---- */
+  .dark {
+    --c-app: 11 11 14;
+    --c-surface: 28 28 32;
+    --c-elevated: 40 40 46;
+    --c-text: 245 245 247;
+    --c-text2: 174 174 181;
+    --c-text3: 138 138 146;
+    --c-border: 56 56 62;
+    --c-tint: 46 46 52;
+    --c-accent: 10 132 255;
+    --c-accent2: 64 158 255;
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-app font-sans text-primary;
+    margin: 0;
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Fondo de madera (modo claro) con un aclarado cálido para legibilidad */
+    background-image:
+      linear-gradient(rgba(250, 248, 244, 0.3), rgba(250, 248, 244, 0.3)),
+      url("/wood-bg.jpg");
+  }
+
+  .dark body {
+    /* Fondo de madera oscura (modo oscuro) con un velo oscuro para legibilidad */
+    background-image:
+      linear-gradient(rgba(11, 11, 14, 0.4), rgba(11, 11, 14, 0.4)),
+      url("/wood-dark-bg.jpg");
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-primary;
+    letter-spacing: -0.015em;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.55;
+  }
+  .dark input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.55;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-text3) / 0.35);
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--c-text3) / 0.55);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ---------- Glassmorphism ---------- */
+  /* Sin tinte de color: casi transparente, solo desenfoque + borde + sombra */
+  .glass,
+  .card,
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(28px) saturate(150%);
+    -webkit-backdrop-filter: blur(28px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow:
+      0 1px 2px rgba(17, 24, 39, 0.04),
+      0 12px 32px -14px rgba(17, 24, 39, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+  .dark .glass,
+  .dark .card,
+  .dark .glass-strong {
+    background: rgba(20, 20, 24, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 16px 40px -16px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(36px) saturate(160%);
+    -webkit-backdrop-filter: blur(36px) saturate(160%);
+  }
+  .dark .glass-strong {
+    background: rgba(22, 22, 26, 0.32);
+  }
+
+  /* Vibrancy para barras de navegación */
+  .nav-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(28px) saturate(150%);
+    -webkit-backdrop-filter: blur(28px) saturate(150%);
+  }
+  .dark .nav-glass {
+    background: rgba(16, 16, 20, 0.24);
+  }
+
+  /* Glass más ligero para tablas, controles y menús (sin sombra fuerte) */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .dark .glass-panel {
+    background: rgba(20, 20, 24, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .card {
+    @apply rounded-apple p-5;
+  }
+
+  .card-hover {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 2px rgba(17, 24, 39, 0.05),
+      0 22px 46px -18px rgba(17, 24, 39, 0.26),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .dark .card-hover:hover {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.4),
+      0 26px 54px -20px rgba(0, 0, 0, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* ---------- Botones ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] px-4 py-2 text-sm font-medium transition duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background: linear-gradient(180deg, rgb(var(--c-accent)) 0%, rgb(var(--c-accent2)) 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14), 0 6px 16px -8px rgb(var(--c-accent) / 0.65);
+  }
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+  .btn-primary:active:not(:disabled) {
+    filter: brightness(0.96);
+    transform: translateY(0.5px);
+  }
+
+  .btn-ghost {
+    @apply btn border text-primary;
+    border-color: rgb(var(--c-border));
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .dark .btn-ghost {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .dark .btn-ghost:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.09);
+  }
+
+  .btn-subtle {
+    @apply btn text-secondary;
+  }
+  .btn-subtle:hover:not(:disabled) {
+    background: rgb(var(--c-text3) / 0.12);
+  }
+
+  .btn-sm {
+    @apply gap-1.5 px-3 py-1.5 text-xs;
+  }
+
+  /* ---------- Inputs ---------- */
+  .input {
+    @apply w-full rounded-[10px] border px-3 py-2 text-sm text-primary transition;
+    border-color: rgb(var(--c-border));
+    background: rgb(var(--c-surface) / 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .input::placeholder {
+    @apply text-muted;
+  }
+  .input:focus {
+    @apply outline-none;
+    border-color: rgb(var(--c-accent));
+    box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.22);
+  }
+  .dark .input {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .label {
+    @apply mb-1 block text-xs font-medium text-muted;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}

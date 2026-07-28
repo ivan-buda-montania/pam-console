@@ -1,0 +1,241 @@
+import { fechaRel } from "./seed";
+
+// Facturas. estado: emitida | pagada | vencida. Moneda MXN, IVA 16%.
+// El estado puede cambiarse en el prototipo y se persiste como override en localStorage.
+// lineas[].categoriaId referencia a las categorías editables (ver categorias.js).
+export const FACTURAS = [
+  {
+    id: "fac-1", folio: "PAM-2026-0001", clienteId: "cli-2", artistaId: "art-1", eventoId: "evt-1",
+    fechaEmision: fechaRel(-42), fechaVencimiento: fechaRel(-12), estado: "pagada",
+    moneda: "MXN", impuestoPct: 16, notas: "Pagada por transferencia. Anticipo 50% + liquidación.",
+    lineas: [
+      { id: "lin-1-1", descripcion: "Renta de palenque", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 260000 },
+      { id: "lin-1-2", descripcion: "Ingeniería de sonido e iluminación", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 180000 },
+      { id: "lin-1-3", descripcion: "Transporte y logística", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 90000 },
+      { id: "lin-1-4", descripcion: "Catering backstage", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 70000 },
+      { id: "lin-1-5", descripcion: "Show artístico (fee de management)", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 120000 },
+    ],
+  },
+  {
+    id: "fac-2", folio: "PAM-2026-0002", clienteId: "cli-3", artistaId: "art-2", eventoId: "evt-2",
+    fechaEmision: fechaRel(-35), fechaVencimiento: fechaRel(-5), estado: "pagada",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-2-1", descripcion: "Renta de terraza", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 120000 },
+      { id: "lin-2-2", descripcion: "Audio e iluminación", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 90000 },
+      { id: "lin-2-3", descripcion: "Catering de activación", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 60000 },
+      { id: "lin-2-4", descripcion: "Producción de contenido", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 50000 },
+    ],
+  },
+  {
+    id: "fac-3", folio: "PAM-2026-0003", clienteId: "cli-6", artistaId: "art-3", eventoId: "evt-3",
+    fechaEmision: fechaRel(-40), fechaVencimiento: fechaRel(-10), estado: "vencida",
+    moneda: "MXN", impuestoPct: 16, notas: "Vencida. Dar seguimiento de cobranza.",
+    lineas: [
+      { id: "lin-3-1", descripcion: "Renta de palenque", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 300000 },
+      { id: "lin-3-2", descripcion: "Ingeniería de sonido (banda)", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 220000 },
+      { id: "lin-3-3", descripcion: "Transporte (3 camionetas)", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 130000 },
+      { id: "lin-3-4", descripcion: "Catering de staff", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 80000 },
+      { id: "lin-3-5", descripcion: "Vestuario de banda", categoriaId: "cat-vestuario", cantidad: 1, precioUnitario: 50000 },
+      { id: "lin-3-6", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 200000 },
+    ],
+  },
+  {
+    id: "fac-4", folio: "PAM-2026-0004", clienteId: "cli-7", artistaId: "art-4", eventoId: "evt-4",
+    fechaEmision: fechaRel(-21), fechaVencimiento: fechaRel(9), estado: "pagada",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-4-1", descripcion: "Producción visual + LED", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 120000 },
+      { id: "lin-4-2", descripcion: "Renta de club", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 90000 },
+      { id: "lin-4-3", descripcion: "Transporte de equipo", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 30000 },
+      { id: "lin-4-4", descripcion: "Set de DJ", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 60000 },
+    ],
+  },
+  {
+    id: "fac-5", folio: "PAM-2026-0005", clienteId: "cli-8", artistaId: "art-5", eventoId: "evt-5",
+    fechaEmision: fechaRel(-33), fechaVencimiento: fechaRel(-3), estado: "vencida",
+    moneda: "MXN", impuestoPct: 16, notas: "Vencida hace pocos días.",
+    lineas: [
+      { id: "lin-5-1", descripcion: "Show + mariachi (12 músicos)", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 250000 },
+      { id: "lin-5-2", descripcion: "Audio para jardín", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 90000 },
+      { id: "lin-5-3", descripcion: "Catering", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 110000 },
+      { id: "lin-5-4", descripcion: "Vestuario", categoriaId: "cat-vestuario", cantidad: 1, precioUnitario: 40000 },
+      { id: "lin-5-5", descripcion: "Transporte", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 70000 },
+    ],
+  },
+  {
+    id: "fac-6", folio: "PAM-2026-0006", clienteId: "cli-5", artistaId: "art-6", eventoId: "evt-6",
+    fechaEmision: fechaRel(-14), fechaVencimiento: fechaRel(16), estado: "pagada",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-6-1", descripcion: "Slot de festival (show)", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 340000 },
+      { id: "lin-6-2", descripcion: "Ingeniería de monitores", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 120000 },
+      { id: "lin-6-3", descripcion: "Transporte y vuelos", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 100000 },
+      { id: "lin-6-4", descripcion: "Comida de crew", categoriaId: "cat-comida", cantidad: 1, precioUnitario: 60000 },
+    ],
+  },
+  {
+    id: "fac-7", folio: "PAM-2026-0007", clienteId: "cli-4", artistaId: "art-1", eventoId: "evt-7",
+    fechaEmision: fechaRel(-8), fechaVencimiento: fechaRel(22), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-7-1", descripcion: "Renta de palenque GDL", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 280000 },
+      { id: "lin-7-2", descripcion: "Sonido e iluminación", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 180000 },
+      { id: "lin-7-3", descripcion: "Transporte", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 90000 },
+      { id: "lin-7-4", descripcion: "Catering", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 60000 },
+      { id: "lin-7-5", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 150000 },
+    ],
+  },
+  {
+    id: "fac-8", folio: "PAM-2026-0008", clienteId: "cli-9", artistaId: "art-2", eventoId: "evt-8",
+    fechaEmision: fechaRel(-20), fechaVencimiento: fechaRel(10), estado: "pagada",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-8-1", descripcion: "Renta de teatro", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 130000 },
+      { id: "lin-8-2", descripcion: "Audio e iluminación", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 100000 },
+      { id: "lin-8-3", descripcion: "Vestuario", categoriaId: "cat-vestuario", cantidad: 1, precioUnitario: 30000 },
+      { id: "lin-8-4", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 120000 },
+    ],
+  },
+  {
+    id: "fac-9", folio: "PAM-2026-0009", clienteId: "cli-2", artistaId: "art-3", eventoId: "evt-9",
+    fechaEmision: fechaRel(-35), fechaVencimiento: fechaRel(-5), estado: "vencida",
+    moneda: "MXN", impuestoPct: 16, notas: "Anticipo facturado; liquidación vencida.",
+    lineas: [
+      { id: "lin-9-1", descripcion: "Renta de teatro del pueblo", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 250000 },
+      { id: "lin-9-2", descripcion: "Ingeniería de sonido", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 200000 },
+      { id: "lin-9-3", descripcion: "Transporte y hospedaje", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 150000 },
+      { id: "lin-9-4", descripcion: "Comida de crew", categoriaId: "cat-comida", cantidad: 1, precioUnitario: 80000 },
+      { id: "lin-9-5", descripcion: "Vestuario", categoriaId: "cat-vestuario", cantidad: 1, precioUnitario: 40000 },
+      { id: "lin-9-6", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 180000 },
+    ],
+  },
+  {
+    id: "fac-10", folio: "PAM-2026-0010", clienteId: "cli-10", artistaId: "art-4", eventoId: "evt-10",
+    fechaEmision: fechaRel(-10), fechaVencimiento: fechaRel(20), estado: "pagada",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-10-1", descripcion: "Cabina + visuales", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 110000 },
+      { id: "lin-10-2", descripcion: "Renta de roof garden", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 90000 },
+      { id: "lin-10-3", descripcion: "Comida y bebidas", categoriaId: "cat-comida", cantidad: 1, precioUnitario: 40000 },
+      { id: "lin-10-4", descripcion: "Set de DJ", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 40000 },
+    ],
+  },
+  {
+    id: "fac-11", folio: "PAM-2026-0011", clienteId: "cli-1", artistaId: "art-1", eventoId: "evt-11",
+    fechaEmision: fechaRel(-2), fechaVencimiento: fechaRel(28), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-11-1", descripcion: "Renta de auditorio", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 320000 },
+      { id: "lin-11-2", descripcion: "Producción de escenario", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 260000 },
+      { id: "lin-11-3", descripcion: "Transporte y logística", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 90000 },
+      { id: "lin-11-4", descripcion: "Catering", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 60000 },
+      { id: "lin-11-5", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 320000 },
+    ],
+  },
+  {
+    id: "fac-12", folio: "PAM-2026-0012", clienteId: "cli-5", artistaId: "art-6", eventoId: "evt-12",
+    fechaEmision: fechaRel(-1), fechaVencimiento: fechaRel(29), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-12-1", descripcion: "Slot de festival (show)", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 340000 },
+      { id: "lin-12-2", descripcion: "Ingeniería de sonido", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 130000 },
+      { id: "lin-12-3", descripcion: "Transporte y vuelos", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 110000 },
+      { id: "lin-12-4", descripcion: "Comida de crew", categoriaId: "cat-comida", cantidad: 1, precioUnitario: 60000 },
+    ],
+  },
+  {
+    id: "fac-13", folio: "PAM-2026-0013", clienteId: "cli-8", artistaId: "art-5", eventoId: "evt-13",
+    fechaEmision: fechaRel(0), fechaVencimiento: fechaRel(30), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-13-1", descripcion: "Show + mariachi", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 250000 },
+      { id: "lin-13-2", descripcion: "Audio e iluminación", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 100000 },
+      { id: "lin-13-3", descripcion: "Renta de museo", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 120000 },
+      { id: "lin-13-4", descripcion: "Catering de gala", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 70000 },
+    ],
+  },
+  {
+    id: "fac-14", folio: "PAM-2026-0014", clienteId: "cli-4", artistaId: "art-3", eventoId: "evt-15",
+    fechaEmision: fechaRel(-1), fechaVencimiento: fechaRel(29), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-14-1", descripcion: "Renta de palenque", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 300000 },
+      { id: "lin-14-2", descripcion: "Ingeniería de sonido", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 220000 },
+      { id: "lin-14-3", descripcion: "Transporte y hospedaje", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 150000 },
+      { id: "lin-14-4", descripcion: "Vestuario", categoriaId: "cat-vestuario", cantidad: 1, precioUnitario: 50000 },
+      { id: "lin-14-5", descripcion: "Comida", categoriaId: "cat-comida", cantidad: 1, precioUnitario: 80000 },
+      { id: "lin-14-6", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 220000 },
+    ],
+  },
+  {
+    id: "fac-15", folio: "PAM-2026-0015", clienteId: "cli-4", artistaId: "art-6", eventoId: "evt-19",
+    fechaEmision: fechaRel(0), fechaVencimiento: fechaRel(30), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-15-1", descripcion: "Renta de arena", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 260000 },
+      { id: "lin-15-2", descripcion: "Producción de arena", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 200000 },
+      { id: "lin-15-3", descripcion: "Transporte y vuelos", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 100000 },
+      { id: "lin-15-4", descripcion: "Vestuario", categoriaId: "cat-vestuario", cantidad: 1, precioUnitario: 40000 },
+      { id: "lin-15-5", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 220000 },
+    ],
+  },
+  {
+    id: "fac-16", folio: "PAM-2026-0016", clienteId: "cli-2", artistaId: "art-3", eventoId: "evt-21",
+    fechaEmision: fechaRel(-1), fechaVencimiento: fechaRel(29), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-16-1", descripcion: "Renta de palenque", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 300000 },
+      { id: "lin-16-2", descripcion: "Ingeniería de sonido", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 210000 },
+      { id: "lin-16-3", descripcion: "Transporte y hospedaje", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 140000 },
+      { id: "lin-16-4", descripcion: "Comida de crew", categoriaId: "cat-comida", cantidad: 1, precioUnitario: 80000 },
+      { id: "lin-16-5", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 260000 },
+    ],
+  },
+  {
+    id: "fac-17", folio: "PAM-2026-0017", clienteId: "cli-9", artistaId: "art-1", eventoId: "evt-23",
+    fechaEmision: fechaRel(0), fechaVencimiento: fechaRel(30), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-17-1", descripcion: "Renta de explanada + permisos", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 220000 },
+      { id: "lin-17-2", descripcion: "Escenario y pantallas", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 230000 },
+      { id: "lin-17-3", descripcion: "Transporte", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 80000 },
+      { id: "lin-17-4", descripcion: "Catering", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 50000 },
+      { id: "lin-17-5", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 180000 },
+    ],
+  },
+  {
+    id: "fac-18", folio: "PAM-2026-0018", clienteId: "cli-1", artistaId: "art-6", eventoId: "evt-25",
+    fechaEmision: fechaRel(-2), fechaVencimiento: fechaRel(28), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-18-1", descripcion: "Escenario masivo", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 260000 },
+      { id: "lin-18-2", descripcion: "Permisos y venue", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 200000 },
+      { id: "lin-18-3", descripcion: "Transporte y vuelos", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 120000 },
+      { id: "lin-18-4", descripcion: "Comida de crew", categoriaId: "cat-comida", cantidad: 1, precioUnitario: 70000 },
+      { id: "lin-18-5", descripcion: "Vestuario", categoriaId: "cat-vestuario", cantidad: 1, precioUnitario: 50000 },
+      { id: "lin-18-6", descripcion: "Show artístico", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 200000 },
+    ],
+  },
+  {
+    id: "fac-19", folio: "PAM-2026-0019", clienteId: "cli-10", artistaId: "art-7", eventoId: "evt-30",
+    fechaEmision: fechaRel(-20), fechaVencimiento: fechaRel(10), estado: "pagada",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-19-1", descripcion: "Fee de creadora (campaña)", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 180000 },
+      { id: "lin-19-2", descripcion: "Producción de contenido", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 60000 },
+      { id: "lin-19-3", descripcion: "Renta de estudio", categoriaId: "cat-venues", cantidad: 1, precioUnitario: 40000 },
+      { id: "lin-19-4", descripcion: "Transporte", categoriaId: "cat-transporte", cantidad: 1, precioUnitario: 20000 },
+    ],
+  },
+  {
+    id: "fac-20", folio: "PAM-2026-0020", clienteId: "cli-3", artistaId: "art-7", eventoId: "evt-31",
+    fechaEmision: fechaRel(-1), fechaVencimiento: fechaRel(29), estado: "emitida",
+    moneda: "MXN", impuestoPct: 16, notas: "",
+    lineas: [
+      { id: "lin-20-1", descripcion: "Fee de creadora (activación)", categoriaId: "cat-otras", cantidad: 1, precioUnitario: 170000 },
+      { id: "lin-20-2", descripcion: "Cobertura en vivo", categoriaId: "cat-ingenieria", cantidad: 1, precioUnitario: 40000 },
+      { id: "lin-20-3", descripcion: "Catering", categoriaId: "cat-catering", cantidad: 1, precioUnitario: 30000 },
+    ],
+  },
+];
